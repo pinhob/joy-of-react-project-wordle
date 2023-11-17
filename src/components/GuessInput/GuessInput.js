@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function GuessInput({ setGuesses }) {
+function GuessInput({ setGuesses, disabled }) {
   const [guess, setGuess] = useState([]);
 
   const handleInput = (e) => {
@@ -22,6 +22,7 @@ function GuessInput({ setGuesses }) {
     <input
       id="guess-input"
       type="text"
+      disabled={disabled}
       value={guess}
       onChange={handleInput}
       minLength={5}

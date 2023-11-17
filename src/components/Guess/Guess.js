@@ -3,10 +3,16 @@ import { range } from '../../utils';
 import { checkGuess } from '../../game-helpers';
 
 
-function Guess({ guess, answer }) {
+function Guess({ guess, answer, setGuessIsRight }) {
   const MAX_LETTERS_ALLOWED = 5;
 
   const guessResult = checkGuess(guess, answer);
+
+  const isAnswerRight = guessResult?.every(guess => guess.status === 'correct');
+
+  if (isAnswerRight) {
+    setGuessIsRight(true);
+  }
 
   return <p className='guess'>
     {range(MAX_LETTERS_ALLOWED).map(num => {
